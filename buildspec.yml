@@ -7,7 +7,7 @@ phases:
             java: corretto17
     pre_build:
         commands:
-          - cd first-ecr-ecs-app
+          - cd Java-AWS-RnD-ECS
           - mvn clean install
           - echo Logging in to Amazon ECR...
           - aws --version
