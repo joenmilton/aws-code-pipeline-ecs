@@ -4,7 +4,7 @@ version: 0.2
 phases:
     install:
         runtime-versions:
-            java: corretto11
+            java: corretto17
     pre_build:
         commands:
           - cd first-ecr-ecs-app
@@ -12,7 +12,7 @@ phases:
           - echo Logging in to Amazon ECR...
           - aws --version
           - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-          - REPOSITORY_URI=154983737326.dkr.ecr.us-east-2.amazonaws.com/first-ecr-registry
+          - REPOSITORY_URI=public.ecr.aws/w3c0a5t7/aws-ecs-test
           - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
           - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
     build:
